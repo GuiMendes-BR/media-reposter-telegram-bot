@@ -1,13 +1,29 @@
+### VisualStudioCode ###
+.vscode/*      # Maybe .vscode/**/* instead - see comments
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+### VisualStudioCode Patch ###
+# Ignore all local history of files
+**/.history
+
+# End of https://www.gitignore.io/api/visualstudiocode
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 /venv
 /downloaded_files
-*.mp4
 
+*.mp4
+bot.session
+*.jgp
 # C extensions
 *.so
+
 
 # Distribution / packaging
 .Python
