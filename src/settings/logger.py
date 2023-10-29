@@ -18,5 +18,5 @@ logger.addHandler(handler)
 
 # Set a rotating file handler
 handler = TimedRotatingFileHandler(
-    filename=config.logs_folder / f'{config.process_id}-log.log', backupCount=10, when='midnight')
+    filename=config.logs_folder / f'{config.process_id}.log', backupCount=10, when='midnight')
 logger.addHandler(handler)

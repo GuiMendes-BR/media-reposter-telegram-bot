@@ -18,8 +18,6 @@ class Settings(BaseSettings):
     instagram_username: str = Field(..., env="INSTAGRAM_USERNAME")
     instagram_password: str = Field(..., env="INSTAGRAM_PASSWORD")
 
-    chat_id: int = Field(..., env="CHAT_ID")
-
     # URLs
     instagram_url: AnyUrl = Field(..., env="INSTAGRAM_URL")
     sssinstagram_url: AnyUrl = Field(..., env="SSSINSTAGRAM_URL")
