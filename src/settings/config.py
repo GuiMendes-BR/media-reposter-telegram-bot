@@ -21,7 +21,11 @@ class Settings(BaseSettings):
     # URLs
     instagram_url: AnyUrl = Field(..., env="INSTAGRAM_URL")
     sssinstagram_url: AnyUrl = Field(..., env="SSSINSTAGRAM_URL")
-
+    
+    # Proxy
+    use_proxy: bool = Field(..., env="USE_PROXY")
+    proxy: str = Field(..., env="proxy")
+    
     # Folders
     downloads_folder: DirectoryPath = Field(..., env="DOWNLOADS_FOLDER")
     logs_folder: DirectoryPath = Field(..., env="LOGS_FOLDER")

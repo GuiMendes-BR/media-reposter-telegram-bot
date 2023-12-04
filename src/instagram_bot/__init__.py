@@ -22,7 +22,8 @@ class InstagramBot():
         self.username = username
         self.password = password
         self.client = self._get_client()
-        self.driver: webdriver.Chrome = Driver(uc=True)
+        os.system("export DISPLAY=$HOST_IP:99")
+        self.driver: webdriver.Firefox = Driver(uc=True, browser='chrome', headed=True)
         self.wait = WebDriverWait(self.driver, 10)
 
     def _get_client(self):
@@ -31,18 +32,19 @@ class InstagramBot():
         delay_range = [1, 3]
         
         cl = Client()
+        if config.use_proxy:
+            # before_ip = cl._send_public_request("https://api.ipify.org/")
+            cl.set_proxy(config.proxy)
+            # after_ip = cl._send_public_request("https://api.ipify.org/")
+            
+            # print(f"Before: {before_ip}")
+            # print(f"After: {after_ip}")
         cl.delay_range = delay_range
         
         if os.path.exists(SESSION_FILE):
-            try:
-                cl.load_settings(SESSION_FILE)
-                cl.login(self.username, self.password)
-            except Exception as e:
-                logger.warn(f"An error occurred while trying to log in using session file, trying to log in via username...")
-                cl = Client()
-                cl.delay_range = delay_range
-                cl.login(self.username, self.password)
-                cl.dump_settings(SESSION_FILE)
+            cl.load_settings(SESSION_FILE)
+            cl.login(self.username, self.password)
+
         else:
             cl.login(self.username, self.password)
             cl.dump_settings(SESSION_FILE)

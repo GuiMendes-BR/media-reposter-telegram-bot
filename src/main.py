@@ -8,6 +8,7 @@ from settings.config import config
 from instagram_bot import InstagramBot
 
 
+
 client = TelegramClient('bot', config.telegram_api_id, config.telegram_api_hash).start(
     bot_token=config.telegram_api_bot_token)
 
